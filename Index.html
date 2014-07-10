@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head><title>Cron&oacute;metro</title><meta charset="utf-8">
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+ <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> 
+<link href='http://fonts.googleapis.com/css?family=Allura' rel='stylesheet' type='text/css'> 
+    <link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    
+ <link href="css/crono.css"  rel="stylesheet" type="text/css">
+    
+    
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+   
+    <script  type="text/javascript" type ="text/css">      
+    $(function(){
+        var t , cl = $("#crono");
+      var cad = ""; cont = 1;
+        li = $('#lista');
+        
+        
+      function mostrar() {
+            cl.html((+cl.html()+0.1).toFixed(1));
+            
+        };
+            function arrancar (){
+                t = setInterval(mostrar,100);
+            };
+            
+            function parar(){
+                clearInterval(t);
+                t= undefined;
+                cad += cont + " => " + cl.html() + "segundos <br>"; 
+                cont += 1; 
+                
+                li.html(cad);  
+            };
+            
+            function cambiar(){
+            if (!t)
+                arrancar();
+                else 
+                    parar();
+            };
+            
+            $("#cambiar").on('click', cambiar);
+            
+            $("#inicializar").on 
+                        ('click',
+                                 function (){
+                                     cl.html("0.0");
+                                        li.html("");
+                                        cad = "";
+                                        cont = 1;
+                                                         }
+                        );
+        });
+         </script>
+     </head>
+<body>
+   
+    
+   
+    <h2>Cr&oacute;nometro</h2>
+   <div >
+    <div class="imagen">
+    <div id="crono"> 0.0 </div>
+    <button type="button" id="cambiar" class="boton">
+    arrancar/parar</button>
+  
+    <button type="button" id="inicializar" class="boton">
+      inicializar</button><br>
+        <br> <br>
+       <div id='lista'>
+           
+</div>
+       
+    
+</body>
+    </html>
